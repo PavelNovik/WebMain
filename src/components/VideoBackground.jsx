@@ -68,14 +68,46 @@ export default function VideoBackground() {
     }
   }, [allowed, failed, ready])
 
-  const onLoaded = () => {
-    const v = videoEl.current
-    // iOS Safari показывает кадры при перемотке только после первого play()
-    v.play().then(() => v.pause()).catch(() => {})
-    setReady(true)
-  }
-
   const showVideo = allowed && !failed
+
+  // Загрузка видео, в т.ч. на iPhone:
+  // - Safari на iOS игнорирует preload и не грузит видео без воспроизведения, поэтому
+  //   стоит muted autoplay, а при первом же 'playing' ставим паузу — кадрами управляет скролл;
+  // - в режиме энергосбережения iOS автозапуск запрещён — грузим по первому касанию;
+  // - HTML пререндерен, и события могли случиться до гидрации — проверяем readyState вручную.
+  useEffect(() => {
+    const v = videoEl.current
+    if (!v) return
+    if (v.error) {
+      setFailed(true)
+      return
+    }
+    const gestures = ['touchend', 'pointerup', 'click', 'keydown']
+
+    const markReady = () => {
+      if (v.readyState >= 2) setReady(true)
+    }
+    const stop = () => v.pause()
+    const unlock = () => {
+      if (v.readyState >= 2) return removeGestures()
+      v.play().then(() => v.pause()).catch(() => {})
+    }
+    const removeGestures = () => gestures.forEach((g) => window.removeEventListener(g, unlock))
+
+    ;['loadeddata', 'canplay', 'seeked'].forEach((e) => v.addEventListener(e, markReady))
+    v.addEventListener('playing', stop)
+    gestures.forEach((g) => window.addEventListener(g, unlock, { passive: true }))
+
+    if (!v.paused && v.readyState >= 3) v.pause() // автозапуск успел начаться до гидрации
+    if (v.readyState === 0 && v.networkState === v.NETWORK_IDLE) v.load()
+    markReady()
+
+    return () => {
+      ;['loadeddata', 'canplay', 'seeked'].forEach((e) => v.removeEventListener(e, markReady))
+      v.removeEventListener('playing', stop)
+      removeGestures()
+    }
+  }, [showVideo])
 
   return (
     <div className="bg" aria-hidden="true">
@@ -88,11 +120,11 @@ export default function VideoBackground() {
             src={video.src}
             poster={video.poster || undefined}
             muted
+            autoPlay
             playsInline
             preload="auto"
             disablePictureInPicture
             tabIndex={-1}
-            onLoadedData={onLoaded}
             onError={() => setFailed(true)}
           />
         )}
