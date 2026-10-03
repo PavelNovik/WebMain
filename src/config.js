@@ -11,14 +11,16 @@ export const studio = {
   country: 'PL',
 }
 
+// Фон — раскадровка видео, которая «проигрывается» скроллом.
+// Кадры готовятся командой `npm run frames` из video-src/webAppletree.mp4.
 export const video = {
-  // Видео «перематывается» скроллом. Файл готовится командой `npm run video`
-  // из video-src/webAppletree.mp4 (каждый кадр ключевой — иначе перемотка дёргается).
-  src: '/video/webAppletree-scrub.mp4',
+  framesDir: '/frames',
+  // Экраны уже этой пропорции (ширина/высота) получают «мобильный» набор кадров —
+  // только центр картинки, вдвое легче. Совпадает с media в <link rel="preload"> в index.html.
+  mobileMaxAspect: 0.95,
   scrubUntil: 'contact', // id раздела, к которому видео доходит до последнего кадра
   scrubEndOffset: 0.5, // последний кадр, когда верх раздела на середине экрана (0 — у верхнего края)
   scrubSmoothing: 0.12, // 0..1: меньше — плавнее и «инертнее», 1 — без сглаживания
-  poster: '', // например '/video/poster.jpg' — кадр, пока видео грузится
   // false — на мобильных показываем только градиент (экономия трафика)
   enableOnMobile: true,
 }

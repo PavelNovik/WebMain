@@ -1,0 +1,12 @@
+{
+  "count": 40,
+  "ext": "webp",
+  "desktop": {
+    "width": 854,
+    "height": 480
+  },
+  "mobile": {
+    "width": 426,
+    "height": 480
+  }
+}

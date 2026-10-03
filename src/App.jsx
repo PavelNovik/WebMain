@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import VideoBackground from './components/VideoBackground.jsx'
+import ScrollBackground from './components/ScrollBackground.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Advantages from './components/Advantages.jsx'
@@ -39,7 +39,7 @@ export default function App({ initialLang }) {
     <LangProvider lang={lang} setLang={setLang}>
       <SkipLink />
       <CookieConsent />
-      <VideoBackground />
+      <ScrollBackground />
       <Header />
       <main id="main" tabIndex={-1}>
         <Hero />

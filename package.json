@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-server && node scripts/prerender.js",
     "preview": "vite preview",
-    "video": "node scripts/prepare-video.js"
+    "frames": "node scripts/prepare-frames.js"
   },
   "dependencies": {
     "react": "^19.1.0",

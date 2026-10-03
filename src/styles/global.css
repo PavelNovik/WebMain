@@ -73,7 +73,7 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 .bg__fallback,
-.bg__video {
+.bg__frames {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -95,7 +95,7 @@ button, input, textarea { font: inherit; color: inherit; }
   100% { transform: translate3d(2%, -2%, 0) scale(1.02); }
 }
 
-.bg__video {
+.bg__frames {
   /* Видео выше слоя и прижато к верху: нижняя полоса кадра (~13%, где водяной знак)
      всегда остаётся за нижним краем экрана — с учётом параллакс-сдвига и зума слоя. */
   inset: 0 0 auto;
@@ -105,7 +105,7 @@ button, input, textarea { font: inherit; color: inherit; }
   opacity: 0;
   transition: opacity 1.2s var(--ease);
 }
-.bg__video.is-ready { opacity: 1; }
+.bg__frames.is-ready { opacity: 1; }
 
 .bg__overlay {
   position: absolute;
