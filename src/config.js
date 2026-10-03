@@ -37,7 +37,11 @@ export const portfolio = [
     image: '/portfolio/mk-photography',
     color: '#b8935a',
   },
-  { color: '#c47a3d' },
+  {
+    url: 'https://kawiarnia-ten.vercel.app/',
+    image: '/portfolio/ziarno',
+    color: '#c47a3d',
+  },
   { color: '#2fbf8f' },
   { color: '#3d7bff' },
   { color: '#e5487f' },
