@@ -1,4 +1,4 @@
-import { studio, servicePrices } from './config.js'
+import { studio, servicePrices, portfolio } from './config.js'
 import { dictionaries, languages, defaultLang, langPath } from './i18n/index.jsx'
 
 const abs = (path) => studio.siteUrl.replace(/\/$/, '') + path
@@ -193,6 +193,12 @@ export function llmsTxt() {
     '## Process (7 days)',
     '',
     ...t.process.steps.map((s) => `- ${s.day}: ${s.title} — ${s.text}`),
+    '',
+    '## Recent work',
+    '',
+    ...t.portfolio.items
+      .map((p, i) => portfolio[i]?.url && `- [${p.title}](${portfolio[i].url}): ${p.type}`)
+      .filter(Boolean),
     '',
     '## Why choose us',
     '',

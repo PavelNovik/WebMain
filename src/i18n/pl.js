@@ -97,12 +97,13 @@ export default {
   portfolio: {
     eyebrow: 'Portfolio',
     title: 'Ostatnie projekty',
+    visit: 'Zobacz stronę',
     items: [
+      { title: 'MK Photography', type: 'Strona fotografa' },
       { title: 'Kawiarnia „Ziarno”', type: 'Landing page' },
       { title: 'Trener personalny', type: 'Wizytówka' },
       { title: 'Kalkulator remontu', type: 'SPA' },
       { title: 'Szkoła angielskiego', type: 'Landing page' },
-      { title: 'Fotograf', type: 'Portfolio' },
       { title: 'Warsztat samochodowy', type: 'Wizytówka' },
     ],
   },

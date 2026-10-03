@@ -97,12 +97,13 @@ export default {
   portfolio: {
     eyebrow: 'Portfolio',
     title: 'Recent projects',
+    visit: 'Visit site',
     items: [
+      { title: 'MK Photography', type: 'Photographer website' },
       { title: '“Ziarno” coffee shop', type: 'Landing page' },
       { title: 'Personal trainer', type: 'Business card' },
       { title: 'Renovation calculator', type: 'SPA' },
       { title: 'English school', type: 'Landing page' },
-      { title: 'Photographer', type: 'Portfolio' },
       { title: 'Car repair shop', type: 'Business card' },
     ],
   },

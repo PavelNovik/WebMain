@@ -97,12 +97,13 @@ export default {
   portfolio: {
     eyebrow: 'Портфоліо',
     title: 'Останні проєкти',
+    visit: 'Переглянути сайт',
     items: [
+      { title: 'MK Photography', type: 'Сайт фотографа' },
       { title: 'Кав’ярня «Ziarno»', type: 'Лендинг' },
       { title: 'Фітнес-тренер', type: 'Сайт-візитка' },
       { title: 'Калькулятор ремонту', type: 'SPA' },
       { title: 'Школа англійської', type: 'Лендинг' },
-      { title: 'Фотограф', type: 'Портфоліо' },
       { title: 'Автосервіс', type: 'Сайт-візитка' },
     ],
   },

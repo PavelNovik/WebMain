@@ -29,7 +29,19 @@ export const video = {
 // Порядок совпадает с services.items в переводах.
 export const servicePrices = [1500, 2500, 4500]
 
-// Акцентные цвета карточек портфолио (порядок как в portfolio.items)
-export const portfolioColors = ['#c47a3d', '#2fbf8f', '#3d7bff', '#e5487f', '#9a6bff', '#f0b429']
+// Карточки портфолио (порядок как в portfolio.items в переводах).
+// url + image — реальный проект со скриншотом; без них — карточка-заглушка.
+export const portfolio = [
+  {
+    url: 'https://photograph1.vercel.app/',
+    image: '/portfolio/mk-photography',
+    color: '#b8935a',
+  },
+  { color: '#c47a3d' },
+  { color: '#2fbf8f' },
+  { color: '#3d7bff' },
+  { color: '#e5487f' },
+  { color: '#f0b429' },
+]
 
 export const navIds = ['advantages', 'services', 'process', 'portfolio', 'faq', 'contact']
