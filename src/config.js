@@ -2,8 +2,9 @@
 
 export const studio = {
   name: 'Pixel Studio',
-  // Боевой адрес сайта — нужен для canonical, sitemap, hreflang и разметки Schema.org
-  siteUrl: 'https://pixelstudio.pl',
+  // Боевой адрес сайта — нужен для canonical, sitemap, hreflang и разметки Schema.org.
+  // При сборке на Vercel подставляется домен проекта (см. vite.config.js).
+  siteUrl: __SITE_URL__ || 'https://pixelstudio.pl',
   email: 'hello@pixelstudio.pl',
   telegram: 'pixelstudio',
   phone: '+48 500 000 000',
