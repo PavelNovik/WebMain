@@ -161,10 +161,16 @@ button, input, textarea { font: inherit; color: inherit; }
 /* ───────── Шапка ───────── */
 
 .header {
+  /* Фон шапки продлён вверх за край экрана: iOS 26 (Safari и встроенные браузеры)
+     рисует страницу и над областью просмотра — под строкой состояния и адресной строкой. */
+  --header-ext: 160px;
   position: fixed;
-  inset: 0 0 auto;
+  top: calc(-1 * var(--header-ext));
+  left: 0;
+  right: 0;
   z-index: 50;
-  height: var(--header-h);
+  height: calc(var(--header-h) + var(--header-ext));
+  padding-top: var(--header-ext);
   transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
   border-bottom: 1px solid transparent;
 }
@@ -287,7 +293,8 @@ button, input, textarea { font: inherit; color: inherit; }
   .nav__list a { display: block; }
   .nav {
     position: fixed;
-    top: var(--header-h);
+    /* открытая шапка с backdrop-filter — контейнер для fixed-меню, отсчёт от её верха */
+    top: calc(var(--header-ext) + var(--header-h));
     left: 0;
     right: 0;
     height: calc(100dvh - var(--header-h));
@@ -953,10 +960,16 @@ button, input, textarea { font: inherit; color: inherit; }
   background: #fff;
   color: #07070d;
   font-weight: 700;
-  transform: translateY(-200%);
-  transition: transform 0.2s;
 }
-.skip-link:focus { transform: none; }
+/* прячем, пока не получит фокус с клавиатуры (сдвиг за край экрана на iOS 26 виден) */
+.skip-link:not(:focus) {
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 main:focus { outline: none; }
 
