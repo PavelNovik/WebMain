@@ -47,7 +47,12 @@ export const portfolio = [
     image: '/portfolio/kowal',
     color: '#c8ff00',
   },
-  { color: '#3d7bff' },
+  {
+    url: 'https://remonty-six.vercel.app/',
+    image: '/portfolio/profesjonalista',
+    color: '#1f45e0',
+    ink: '#fff',
+  },
   {
     url: 'https://schoolengdeu.vercel.app/',
     image: '/portfolio/most',

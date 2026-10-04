@@ -102,7 +102,7 @@ export default {
       { title: 'MK Photography', type: 'Сайт фотографа' },
       { title: 'Кав’ярня «Ziarno»', type: 'Лендинг' },
       { title: 'Персональний тренер KOWAL', type: 'Сайт-візитка' },
-      { title: 'Калькулятор ремонту', type: 'SPA' },
+      { title: 'Ремонти «Profesjonalista»', type: 'SPA + калькулятор' },
       { title: 'Мовна школа MOST', type: 'Лендинг' },
       { title: 'Автосервіс AUTO 61', type: 'Сайт-візитка' },
     ],
