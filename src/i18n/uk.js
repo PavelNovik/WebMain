@@ -101,7 +101,7 @@ export default {
     items: [
       { title: 'MK Photography', type: 'Сайт фотографа' },
       { title: 'Кав’ярня «Ziarno»', type: 'Лендинг' },
-      { title: 'Фітнес-тренер', type: 'Сайт-візитка' },
+      { title: 'Персональний тренер KOWAL', type: 'Сайт-візитка' },
       { title: 'Калькулятор ремонту', type: 'SPA' },
       { title: 'Школа англійської', type: 'Лендинг' },
       { title: 'Автосервіс', type: 'Сайт-візитка' },

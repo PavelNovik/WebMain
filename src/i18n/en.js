@@ -101,7 +101,7 @@ export default {
     items: [
       { title: 'MK Photography', type: 'Photographer website' },
       { title: '“Ziarno” coffee shop', type: 'Landing page' },
-      { title: 'Personal trainer', type: 'Business card' },
+      { title: 'KOWAL personal trainer', type: 'Business card' },
       { title: 'Renovation calculator', type: 'SPA' },
       { title: 'English school', type: 'Landing page' },
       { title: 'Car repair shop', type: 'Business card' },
