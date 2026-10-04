@@ -49,7 +49,12 @@ export const portfolio = [
   },
   { color: '#3d7bff' },
   { color: '#e5487f' },
-  { color: '#f0b429' },
+  {
+    url: 'https://warsztat-azure.vercel.app/',
+    image: '/portfolio/auto61',
+    color: '#e8202a',
+    ink: '#fff', // цвет текста на акценте (по умолчанию тёмный)
+  },
 ]
 
 export const navIds = ['advantages', 'services', 'process', 'portfolio', 'faq', 'contact']

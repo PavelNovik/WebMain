@@ -104,7 +104,7 @@ export default {
       { title: 'KOWAL personal trainer', type: 'Business card' },
       { title: 'Renovation calculator', type: 'SPA' },
       { title: 'English school', type: 'Landing page' },
-      { title: 'Car repair shop', type: 'Business card' },
+      { title: 'AUTO 61 car repair shop', type: 'Business card' },
     ],
   },
 

@@ -769,7 +769,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .work--live:hover .work__visit,
 .work--live:focus-within .work__visit {
   background: var(--accent);
-  color: #07070d; /* акценты проектов светлые (золото, медь, салатовый) — тёмный текст читается на всех */
+  color: var(--accent-ink, #07070d); /* для тёмных акцентов задайте ink в config.js */
   transform: translateY(-2px);
 }
 

@@ -104,7 +104,7 @@ export default {
       { title: 'Trener personalny KOWAL', type: 'Wizytówka' },
       { title: 'Kalkulator remontu', type: 'SPA' },
       { title: 'Szkoła angielskiego', type: 'Landing page' },
-      { title: 'Warsztat samochodowy', type: 'Wizytówka' },
+      { title: 'Warsztat AUTO 61', type: 'Wizytówka' },
     ],
   },
 

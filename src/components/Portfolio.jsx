@@ -17,7 +17,7 @@ export default function Portfolio() {
         <ul className="grid grid--3">
           {s.items.map((p, i) => {
             const meta = portfolio[i] || {}
-            const style = { '--delay': `${i * 70}ms`, '--accent': meta.color }
+            const style = { '--delay': `${i * 70}ms`, '--accent': meta.color, '--accent-ink': meta.ink }
             return meta.url ? (
               <li className="work work--live" key={i} data-reveal style={style}>
                 <a href={meta.url} target="_blank" rel="noopener" className="work__link">
