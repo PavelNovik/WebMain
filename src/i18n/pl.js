@@ -103,7 +103,7 @@ export default {
       { title: 'Kawiarnia „Ziarno”', type: 'Landing page' },
       { title: 'Trener personalny KOWAL', type: 'Wizytówka' },
       { title: 'Kalkulator remontu', type: 'SPA' },
-      { title: 'Szkoła angielskiego', type: 'Landing page' },
+      { title: 'Szkoła językowa MOST', type: 'Landing page' },
       { title: 'Warsztat AUTO 61', type: 'Wizytówka' },
     ],
   },

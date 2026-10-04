@@ -48,7 +48,11 @@ export const portfolio = [
     color: '#c8ff00',
   },
   { color: '#3d7bff' },
-  { color: '#e5487f' },
+  {
+    url: 'https://schoolengdeu.vercel.app/',
+    image: '/portfolio/most',
+    color: '#ffc93c',
+  },
   {
     url: 'https://warsztat-azure.vercel.app/',
     image: '/portfolio/auto61',
