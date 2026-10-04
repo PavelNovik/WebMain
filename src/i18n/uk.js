@@ -101,10 +101,10 @@ export default {
     items: [
       { title: 'MK Photography', type: 'Сайт фотографа' },
       { title: 'Кав’ярня «Ziarno»', type: 'Лендинг' },
-      { title: 'Персональний тренер KOWAL', type: 'Сайт-візитка' },
+      { title: 'Персональний тренер KOWAL', type: 'Лендинг' },
       { title: 'Ремонти «Profesjonalista»', type: 'SPA + калькулятор' },
       { title: 'Мовна школа MOST', type: 'Лендинг' },
-      { title: 'Автосервіс AUTO 61', type: 'Сайт-візитка' },
+      { title: 'Автосервіс AUTO 61', type: 'Лендинг' },
     ],
   },
 

@@ -101,10 +101,10 @@ export default {
     items: [
       { title: 'MK Photography', type: 'Photographer website' },
       { title: '“Ziarno” coffee shop', type: 'Landing page' },
-      { title: 'KOWAL personal trainer', type: 'Business card' },
+      { title: 'KOWAL personal trainer', type: 'Landing page' },
       { title: '“Profesjonalista” renovations', type: 'SPA + calculator' },
       { title: 'MOST language school', type: 'Landing page' },
-      { title: 'AUTO 61 car repair shop', type: 'Business card' },
+      { title: 'AUTO 61 car repair shop', type: 'Landing page' },
     ],
   },
 

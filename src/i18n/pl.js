@@ -101,10 +101,10 @@ export default {
     items: [
       { title: 'MK Photography', type: 'Strona fotografa' },
       { title: 'Kawiarnia „Ziarno”', type: 'Landing page' },
-      { title: 'Trener personalny KOWAL', type: 'Wizytówka' },
+      { title: 'Trener personalny KOWAL', type: 'Landing page' },
       { title: 'Remonty „Profesjonalista”', type: 'SPA + kalkulator' },
       { title: 'Szkoła językowa MOST', type: 'Landing page' },
-      { title: 'Warsztat AUTO 61', type: 'Wizytówka' },
+      { title: 'Warsztat AUTO 61', type: 'Landing page' },
     ],
   },
 
