@@ -10,7 +10,17 @@ const { render, renderHead, robotsTxt, sitemapXml, llmsTxt, languages, langPath 
   pathToFileURL(server).href
 )
 
-const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
+// Предзагрузка первого кадра фона: свой набор для узких и широких экранов
+const frames = JSON.parse(fs.readFileSync(path.resolve('src/generated/frames.json'), 'utf8'))
+const first = (set) => `${frames.dir}/${set}/f001.${frames.ext}`
+const framesPreload = [
+  `<link rel="preload" as="image" type="image/webp" href="${first('desktop')}" media="(min-aspect-ratio: 19/20)" fetchpriority="high" />`,
+  `<link rel="preload" as="image" type="image/webp" href="${first('mobile')}" media="(max-aspect-ratio: 19/20)" fetchpriority="high" />`,
+].join('\n    ')
+
+const template = fs
+  .readFileSync(path.join(dist, 'index.html'), 'utf8')
+  .replace('<!--frames-preload-->', framesPreload)
 
 for (const lang of languages) {
   const html = template

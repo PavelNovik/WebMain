@@ -4,8 +4,8 @@ export const studio = {
   name: 'N314 Studio',
   logoMark: 'N',
   // Боевой адрес сайта — нужен для canonical, sitemap, hreflang и разметки Schema.org.
-  // При сборке на Vercel подставляется домен проекта (см. vite.config.js).
-  siteUrl: __SITE_URL__ || 'https://web-main-roan.vercel.app',
+  // Поменяйте здесь, когда появится свой домен (или задайте SITE_URL в Vercel).
+  siteUrl: __SITE_URL__ || 'https://web-main-n314.vercel.app',
   email: 'n314.studio@gmail.com',
   telegram: 'no_314',
   phone: '+48 515 423 651',
@@ -17,9 +17,8 @@ export const studio = {
 // Фон — раскадровка видео, которая «проигрывается» скроллом.
 // Кадры готовятся командой `npm run frames` из video-src/apple-tree.mp4.
 export const video = {
-  framesDir: '/frames',
   // Экраны уже этой пропорции (ширина/высота) получают «мобильный» набор кадров —
-  // только центр картинки, вдвое легче. Совпадает с media в <link rel="preload"> в index.html.
+  // только центр картинки. Совпадает с media у preload-ссылок (scripts/prerender.js).
   mobileMaxAspect: 0.95,
   scrubUntil: 'contact', // id раздела, к которому видео доходит до последнего кадра
   scrubEndOffset: 0.5, // последний кадр, когда верх раздела на середине экрана (0 — у верхнего края)

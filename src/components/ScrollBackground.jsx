@@ -120,7 +120,7 @@ export default function ScrollBackground() {
       if (k === undefined || cancelled) return
       const img = new Image()
       img.decoding = 'async'
-      img.src = `${video.framesDir}/${set}/f${pad(k + 1)}.${frames.ext}`
+      img.src = `${frames.dir}/${set}/f${pad(k + 1)}.${frames.ext}`
       img
         .decode()
         .then(() => {

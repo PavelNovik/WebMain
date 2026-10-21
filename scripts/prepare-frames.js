@@ -2,8 +2,11 @@
 // Два набора: desktop (весь кадр, ширина до DESKTOP_MAX_WIDTH) и mobile (центральная
 // вертикальная часть кадра — на вертикальном экране края всё равно не видны).
 // Между кадрами сайт делает плавный переход, поэтому несколько десятков кадров достаточно.
+// Кадры кладутся в public/frames/<хеш содержимого>/ — новый набор получает новый адрес,
+// поэтому долгий кэш (vercel.json) не показывает старые кадры после перенарезки.
 // Запуск: npm run frames  [-- путь/к/видео.mp4]
 import { spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import ffmpeg from 'ffmpeg-static'
@@ -47,9 +50,13 @@ const sets = {
   },
 }
 
+const tmpRoot = path.join(outRoot, '_tmp')
+fs.rmSync(tmpRoot, { recursive: true, force: true })
+const hash = createHash('sha256')
+
 let count = Infinity
 for (const [name, set] of Object.entries(sets)) {
-  const dir = path.join(outRoot, name)
+  const dir = path.join(tmpRoot, name)
   fs.rmSync(dir, { recursive: true, force: true })
   fs.mkdirSync(dir, { recursive: true })
   const r = spawnSync(
@@ -60,17 +67,26 @@ for (const [name, set] of Object.entries(sets)) {
     { stdio: 'inherit' }
   )
   if (r.status !== 0) process.exit(r.status ?? 1)
-  const files = fs.readdirSync(dir)
+  const files = fs.readdirSync(dir).sort()
+  for (const f of files) hash.update(name + f).update(fs.readFileSync(path.join(dir, f)))
   const bytes = files.reduce((s, f) => s + fs.statSync(path.join(dir, f)).size, 0)
   count = Math.min(count, files.length)
   console.log(`${name}: ${files.length} кадров, ${set.width}×${set.height}, ${(bytes / 1024 / 1024).toFixed(2)} MB`)
 }
+
+// Старые наборы удаляем, новый переносим в папку с хешем
+const version = hash.digest('hex').slice(0, 10)
+for (const entry of fs.readdirSync(outRoot)) {
+  if (entry !== '_tmp') fs.rmSync(path.join(outRoot, entry), { recursive: true, force: true })
+}
+fs.renameSync(tmpRoot, path.join(outRoot, version))
 
 fs.mkdirSync(path.dirname(manifestPath), { recursive: true })
 fs.writeFileSync(
   manifestPath,
   JSON.stringify(
     {
+      dir: `/frames/${version}`,
       count,
       ext: 'webp',
       desktop: { width: sets.desktop.width, height: sets.desktop.height },
@@ -80,4 +96,4 @@ fs.writeFileSync(
     2
   ) + '\n'
 )
-console.log(`→ ${manifestPath}`)
+console.log(`→ public/frames/${version}/, ${manifestPath}`)
