@@ -43,7 +43,7 @@ export default function Header() {
     <header className={`header ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container header__inner">
         <a href="#top" className="logo" onClick={close} aria-label={`${studio.name} — ${t.nav.home}`}>
-          <span className="logo__mark" aria-hidden="true">P</span>
+          <span className="logo__mark" aria-hidden="true">{studio.logoMark}</span>
           <span aria-hidden="true">{studio.name}</span>
         </a>
         <nav className="nav" id="site-nav" aria-label={t.nav.label}>

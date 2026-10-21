@@ -57,6 +57,10 @@ export default function Contact() {
               <span>{c.phone}</span>
               <a href={`tel:${studio.phone.replace(/[^\d+]/g, '')}`}>{studio.phone}</a>
             </li>
+            <li>
+              <span>{c.location}</span>
+              <p className="contact__value">{c.locationText}</p>
+            </li>
           </ul>
         </div>
 

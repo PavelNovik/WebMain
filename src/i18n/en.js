@@ -5,9 +5,9 @@ export default {
   name: 'English',
 
   meta: {
-    title: 'Pixel Studio — websites in 7 days | Business card sites, landing pages, SPA',
+    title: 'N314 Studio — websites in 7 days | Poznań and all of Poland',
     description:
-      'We build business card websites, landing pages and single-page apps in 7 days. Fixed price, responsive design, WCAG accessibility, SEO and post-launch support. Free quote.',
+      'N314 Studio from Poznań: business card websites, landing pages and single-page apps in 7 days. Fixed price, responsive design, WCAG accessibility, SEO and post-launch support. Working across Poland and online.',
     tagline: 'Websites that launch in a week',
   },
 
@@ -141,6 +141,8 @@ export default {
     successTitle: 'Request sent!',
     successText: 'We’ll get back to you shortly.',
     again: 'Send another',
+    location: 'Location',
+    locationText: 'Poznań, Greater Poland · working across Poland and online',
     phone: 'Phone',
     newTab: '(opens in a new tab)',
   },

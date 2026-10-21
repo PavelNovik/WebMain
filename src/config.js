@@ -1,13 +1,16 @@
 // Общие настройки, не зависящие от языка. Тексты — в src/i18n/*.js
 
 export const studio = {
-  name: 'Pixel Studio',
+  name: 'N314 Studio',
+  logoMark: 'N',
   // Боевой адрес сайта — нужен для canonical, sitemap, hreflang и разметки Schema.org.
   // При сборке на Vercel подставляется домен проекта (см. vite.config.js).
-  siteUrl: __SITE_URL__ || 'https://pixelstudio.pl',
-  email: 'hello@pixelstudio.pl',
-  telegram: 'pixelstudio',
-  phone: '+48 500 000 000',
+  siteUrl: __SITE_URL__ || 'https://web-main-roan.vercel.app',
+  email: 'n314.studio@gmail.com',
+  telegram: 'no_314',
+  phone: '+48 515 423 651',
+  city: 'Poznań',
+  region: 'Wielkopolskie',
   country: 'PL',
 }
 

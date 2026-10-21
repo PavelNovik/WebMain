@@ -5,9 +5,9 @@ export default {
   name: 'Polski',
 
   meta: {
-    title: 'Pixel Studio — strony internetowe w 7 dni | Wizytówki, landing page, SPA',
+    title: 'N314 Studio — strony internetowe w 7 dni | Poznań i cała Polska',
     description:
-      'Tworzymy strony wizytówki, landing page i aplikacje SPA w 7 dni. Stała cena, responsywny design, dostępność WCAG, SEO i wsparcie po starcie. Bezpłatna wycena.',
+      'Studio N314 z Poznania: strony wizytówki, landing page i aplikacje SPA w 7 dni. Stała cena, responsywny design, dostępność WCAG, SEO i wsparcie po starcie. Działamy w całej Polsce i online.',
     tagline: 'Strony, które startują w tydzień',
   },
 
@@ -141,6 +141,8 @@ export default {
     successTitle: 'Zgłoszenie wysłane!',
     successText: 'Skontaktujemy się z Tobą wkrótce.',
     again: 'Wyślij kolejne',
+    location: 'Lokalizacja',
+    locationText: 'Poznań, Wielkopolska · działamy w całej Polsce i online',
     phone: 'Telefon',
     newTab: '(otwiera się w nowej karcie)',
   },
