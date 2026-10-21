@@ -1,12 +1,12 @@
 {
-  "count": 40,
+  "count": 32,
   "ext": "webp",
   "desktop": {
-    "width": 854,
-    "height": 480
+    "width": 1440,
+    "height": 596
   },
   "mobile": {
-    "width": 426,
-    "height": 480
+    "width": 648,
+    "height": 720
   }
 }

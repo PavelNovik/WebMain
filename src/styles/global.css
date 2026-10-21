@@ -96,10 +96,10 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 .bg__frames {
-  /* Видео выше слоя и прижато к верху: нижняя полоса кадра (~13%, где водяной знак)
-     всегда остаётся за нижним краем экрана — с учётом параллакс-сдвига и зума слоя. */
+  /* Кадр прижат к верху. --video-visible < 1 делает его выше слоя, чтобы нижняя полоса
+     кадра (например, водяной знак) уходила за край экрана; 0.92 скрывает нижние ~13%. */
   inset: 0 0 auto;
-  height: calc(100% / var(--video-visible, 0.92));
+  height: calc(100% / var(--video-visible, 1));
   object-fit: cover;
   object-position: 50% 0;
   opacity: 0;

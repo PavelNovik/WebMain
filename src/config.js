@@ -15,7 +15,7 @@ export const studio = {
 }
 
 // Фон — раскадровка видео, которая «проигрывается» скроллом.
-// Кадры готовятся командой `npm run frames` из video-src/webAppletree.mp4.
+// Кадры готовятся командой `npm run frames` из video-src/apple-tree.mp4.
 export const video = {
   framesDir: '/frames',
   // Экраны уже этой пропорции (ширина/высота) получают «мобильный» набор кадров —

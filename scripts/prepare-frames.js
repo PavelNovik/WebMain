@@ -1,18 +1,23 @@
 // Нарезает видео на кадры WebP для фона, который «проигрывается» скроллом.
-// Два набора: desktop (полный кадр) и mobile (центральная половина кадра — на
-// вертикальном экране края всё равно не видны). Между кадрами сайт делает плавный переход,
-// поэтому 40 кадров достаточно.
+// Два набора: desktop (весь кадр, ширина до DESKTOP_MAX_WIDTH) и mobile (центральная
+// вертикальная часть кадра — на вертикальном экране края всё равно не видны).
+// Между кадрами сайт делает плавный переход, поэтому несколько десятков кадров достаточно.
 // Запуск: npm run frames  [-- путь/к/видео.mp4]
 import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import ffmpeg from 'ffmpeg-static'
 
-const input = process.argv[2] || 'video-src/webAppletree.mp4'
-const FRAMES = 40
-const QUALITY = 55
+const input = process.argv[2] || 'video-src/apple-tree.mp4'
+const FRAMES = 32
+const QUALITY = 50
+const DESKTOP_MAX_WIDTH = 1440
+const MOBILE_ASPECT = 0.9 // ширина/высота мобильного кадра
+const MOBILE_HEIGHT = 720
 const outRoot = 'public/frames'
 const manifestPath = 'src/generated/frames.json'
+
+const even = (n) => Math.round(n / 2) * 2
 
 // Длительность и размер кадра из вывода ffmpeg
 const probe = spawnSync(ffmpeg, ['-hide_banner', '-i', input], { encoding: 'utf8' }).stderr
@@ -25,11 +30,21 @@ if (!dur || !size) {
 const duration = +dur[1] * 3600 + +dur[2] * 60 + +dur[3]
 const width = +size[1]
 const height = +size[2]
-const mobileWidth = Math.floor(width / 4) * 2 // половина ширины, чётное число
+const fps = `fps=${FRAMES / duration}`
+
+const dWidth = Math.min(width, DESKTOP_MAX_WIDTH)
+const dHeight = even((height * dWidth) / width)
+const cropW = Math.min(width, even(height * MOBILE_ASPECT))
+const mHeight = Math.min(height, MOBILE_HEIGHT)
+const mWidth = even((cropW * mHeight) / height)
 
 const sets = {
-  desktop: { vf: `fps=${FRAMES / duration}`, width, height },
-  mobile: { vf: `fps=${FRAMES / duration},crop=${mobileWidth}:ih:(iw-${mobileWidth})/2:0`, width: mobileWidth, height },
+  desktop: { vf: `${fps},scale=${dWidth}:${dHeight}:flags=lanczos`, width: dWidth, height: dHeight },
+  mobile: {
+    vf: `${fps},crop=${cropW}:ih:(iw-${cropW})/2:0,scale=${mWidth}:${mHeight}:flags=lanczos`,
+    width: mWidth,
+    height: mHeight,
+  },
 }
 
 let count = Infinity
@@ -39,7 +54,7 @@ for (const [name, set] of Object.entries(sets)) {
   fs.mkdirSync(dir, { recursive: true })
   const r = spawnSync(
     ffmpeg,
-    ['-hide_banner', '-loglevel', 'error', '-i', input, '-vf', set.vf,
+    ['-hide_banner', '-loglevel', 'error', '-i', input, '-an', '-vf', set.vf,
       '-c:v', 'libwebp', '-quality', String(QUALITY), '-compression_level', '6',
       path.join(dir, 'f%03d.webp')],
     { stdio: 'inherit' }
